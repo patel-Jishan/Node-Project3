@@ -1,0 +1,50 @@
+{
+  "todos": [
+    {
+      "username": "string",
+      "ID": 1,
+      "Rating": 5,
+      "Description": "string",
+      "Genre": "string",
+      "Cast": [
+        "Actor1",
+        "Actor2",
+        "Actor3"
+      ]
+    },
+    {
+      "username": "Inception",
+      "ID": 2,
+      "Rating": 9,
+      "Description": "Sci-fi movie",
+      "Genre": "Sci-Fi",
+      "Cast": [
+        "Leonardo DiCaprio",
+        "Tom Hardy"
+      ]
+    },
+    {
+      "username": "Interstellar",
+      "ID": 3,
+      "Rating": 9,
+      "Description": "Space movie",
+      "Genre": "Sci-Fi",
+      "Cast": [
+        "Matthew McConaughey",
+        "Anne Hathaway"
+      ]
+    },
+    {
+      "username": "Pushpa",
+      "ID": 4,
+      "Rating": 10,
+      "Description": "Action movie",
+      "Genre": "Comedy",
+      "Cast": [
+        "Allu Arjun",
+        "Shrivali"
+      ]
+    }
+    
+  ]
+}
