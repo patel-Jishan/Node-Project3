@@ -44,12 +44,12 @@ function validationMiddleware(req, res, next) {
   next();
 }
 
-app.post("/data", validationMiddleware, async (req, res) => {
+app.post("/data", validationMiddleware, async (req, res, next) => {
   try {
     let data = await fs.readFile("datastore.json", "utf-8");
     let parsedData = JSON.parse(data);
 
-    parsedData.todos.push(req.body);
+    parsedData.data.push(req.body);
 
     await fs.writeFile(
       "datastore.json",
@@ -58,17 +58,21 @@ app.post("/data", validationMiddleware, async (req, res) => {
 
     res.json({ message: "Data added successfully", success: true });
   } catch (error) {
-    console.log(error);
-    res.status(500).json({
-      message: error.message,
-      success: false
-    });
+    next(error); 
   }
 });
 
-app.use((req, res) => {
-  res.status(404).json({ error: "404 not found" });
-});
+function errorMiddleware(err, req, res, next) {
+  console.error(err.stack);
+
+  res.status(500).json({
+    success: false,
+    message: "Something went wrong",
+    error: err.message
+  });
+}
+
+app.use(errorMiddleware); 
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
